@@ -30,6 +30,10 @@ const style = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 20,
   },
+  userPostStats:{marginLeft:10, flexDirection:'row'},
+  userPostStatsButton:{flexDirection:'row'},
+  userPostStatsButtonRight:{flexDirection:'row', marginLeft:27},
+  userPostStatText:{marginLeft:3, color:'#79869F'}
 });
 
 export default style;
