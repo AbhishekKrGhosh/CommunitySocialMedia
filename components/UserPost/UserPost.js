@@ -19,25 +19,9 @@ const UserPost = (props) => {
                     {props.location && <Text style={style.location}>{props.location}</Text>}
                 </View>
                 </View>
-                <FontAwesomeIcon icon={faEllipsis} size={scaleFontSize(24)} color="#79869F"/>
             </View>
             <View style={style.postImage}>
                 <Image source={props.image} style={{width:300, height:200}}/>
-            </View>
-            <View style={style.userPostStats}>
-                <View style={style.userPostStatsButton}>
-                    <FontAwesomeIcon icon={faHeart} color="#79869F" />
-                    <Text style={style.userPostStatText}>{props.likes}</Text>
-                </View>
-                <View style={style.userPostStatsButtonRight}>
-                    <FontAwesomeIcon icon={faMessage} color="#79869F" />
-                    <Text style={style.userPostStatText}>{props.comments}</Text>
-                </View>
-                <View style={style.userPostStatsButtonRight}>
-                    <FontAwesomeIcon icon={faBookmark} color="#79869F" />
-                    <Text style={style.userPostStatText}>{props.bookmarks}</Text>
-                </View>
-
             </View>
         </View>
     )
@@ -49,9 +33,6 @@ UserPost.propTypes = {
     location: PropTypes.string,
     image: PropTypes.any.isRequired,
     profileImage:PropTypes.any.isRequired,
-    likes:PropTypes.number.isRequired,
-    comments:PropTypes.number.isRequired,
-    bookmarks:PropTypes.number.isRequired,
 }
 
 export default UserPost

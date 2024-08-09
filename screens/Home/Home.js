@@ -6,8 +6,10 @@ import {
   TouchableOpacity,
   View,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import axios from 'axios';
+import nodata from '../../assets/images/nodata.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import globalStyle from './style';
@@ -16,8 +18,11 @@ import UserPost from '../../components/UserPost/UserPost';
 import { horizontalScale } from '../../assets/styles/scaling';
 import { Routes } from '../../navigations/Routes';
 import Title from '../../components/Title/Title';
+import { useCommunity } from '../../context/CommunityContext'; 
 
 const Home = ({ navigation }) => {
+    const DEFAULT_IMAGE = Image.resolveAssetSource(nodata).uri;
+  const { selectedCommunity } = useCommunity(); 
   const [userStories, setUserStories] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
   const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1);
@@ -40,10 +45,18 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch posts and user stories from the API
         const postsResponse = await axios.get('https://socialmedia-xmxs.onrender.com/api/posts');
-        setUserPosts(postsResponse.data); // Assuming posts are in posts property
-        setUserStories(postsResponse.data); // Adjust according to API response structure
+        const filteredPosts = selectedCommunity
+          ? postsResponse.data.filter(post => post.communityName === selectedCommunity)
+          : postsResponse.data;
+        
+        const storiesResponse = await axios.get('https://socialmedia-xmxs.onrender.com/api/posts');
+        const filteredStories = selectedCommunity
+          ? storiesResponse.data.filter(story => story.communityName === selectedCommunity)
+          : storiesResponse.data;
+
+        setUserPosts(filteredPosts);
+        setUserStories(filteredStories);
         setIsLoadingInitialData(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,7 +65,8 @@ const Home = ({ navigation }) => {
     };
 
     fetchData();
-  }, []);
+  }, [selectedCommunity]); 
+  
 
   useEffect(() => {
     if (!isLoadingInitialData) {
@@ -90,6 +104,12 @@ const Home = ({ navigation }) => {
     setIsLoadingUserPosts(false);
   };
 
+  const renderEmptyComponent = (type) => (
+    <View style={globalStyle.emptyContainer}>
+      <Image style={{height:300, width:300}} source={{uri: DEFAULT_IMAGE}} />
+    </View>
+  );
+
   return (
     <SafeAreaView style={globalStyle.whitebackground}>
       {isLoadingInitialData ? (
@@ -105,7 +125,7 @@ const Home = ({ navigation }) => {
                     style={globalStyle.messageIcon}
                     onPress={() => { navigation.navigate(Routes.CreatePost); }}
                   >
-                    <FontAwesomeIcon icon={faPlus} size={horizontalScale(20)} color='#898DAE' />
+                    <FontAwesomeIcon icon={faPlus} size={horizontalScale(20)} color='#914F1E' />
                   </TouchableOpacity>
                 </View>
                 <View style={globalStyle.userStoryContainer}>
@@ -119,13 +139,14 @@ const Home = ({ navigation }) => {
                       <UserStory
                         key={'userStory' + item.id}
                         firstName={item.firstName}
-                        profileImage={{ uri: item.profileImage }} // Ensure the profileImage is in the correct format
+                        profileImage={{ uri: item.profileImage }} 
                       />
                     )}
                   />
                 </View>
               </>
             }
+            ListEmptyComponent={renderEmptyComponent('Posts')}
             onEndReachedThreshold={0.5}
             onEndReached={handleLoadMoreUserPosts}
             showsVerticalScrollIndicator={false}
@@ -134,8 +155,8 @@ const Home = ({ navigation }) => {
               <UserPost
                 firstName={item.firstName}
                 lastName={item.lastName}
-                image={{ uri: item.image }} // Ensure the image is in the correct format
-                profileImage={{ uri: item.profileImage }} // Ensure the profileImage is in the correct format
+                image={{ uri: item.image }} 
+                profileImage={{ uri: item.profileImage }}
                 likes={0}
                 comments={0}
                 bookmarks={0}

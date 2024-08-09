@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TextInput, Button, Image, Alert, ScrollView } from 'react-native';
+import { SafeAreaView, Text, TextInput, Button, Image, Alert, ScrollView, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import axios from 'axios';
+import { useCommunity } from '../../context/CommunityContext';
+import { Routes } from '../../navigations/Routes';
+import styles from './style'; 
 
-const CreatePost = () => {
+const CreatePost = ({ navigation }) => {
+  const { selectedCommunity } = useCommunity();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [location, setLocation] = useState('');
@@ -13,13 +17,11 @@ const CreatePost = () => {
   const selectImage = (setImageCallback) => {
     const options = {
       mediaType: 'photo',
-      includeBase64: true,  // Ensure Base64 data is included
-      quality: 1,  // High quality
+      includeBase64: true,
+      quality: 0,
     };
 
     launchImageLibrary(options, response => {
-      console.log('ImagePicker Response:', response); // Log response for debugging
-
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.errorCode) {
@@ -43,11 +45,12 @@ const CreatePost = () => {
       }
 
       const postData = {
+        communityName: selectedCommunity,
         firstName,
         lastName,
         location,
         image,
-        profileImage
+        profileImage,
       };
 
       const response = await axios.post('https://socialmedia-xmxs.onrender.com/api/posts', postData, {
@@ -58,6 +61,8 @@ const CreatePost = () => {
 
       console.log('Post created:', response.data);
       Alert.alert('Post created successfully!');
+      navigation.navigate(Routes.Home);
+
     } catch (error) {
       console.error('Error creating post:', error);
       Alert.alert('Failed to create post.');
@@ -65,9 +70,9 @@ const CreatePost = () => {
   };
 
   return (
-    <SafeAreaView style={{ padding: 16 }}>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Text style={{ fontSize: 18, marginBottom: 10 }}>Create Post</Text>
+        <Text style={styles.title}>Create Post</Text>
 
         <Text>First Name:</Text>
         <TextInput
@@ -92,34 +97,24 @@ const CreatePost = () => {
           placeholder="Enter Location"
           style={styles.input}
         />
-
-        <Button title="Select Post Image" onPress={() => selectImage(setImage)} />
+<View style={styles.buttonsandimage}>
+<TouchableOpacity style={styles.button} onPress={() => selectImage(setImage)}>
+          <Text style={styles.buttonText}>Select Post Image</Text>
+        </TouchableOpacity>
         {image && <Image source={{ uri: image }} style={styles.imagePreview} />}
 
-        <Button title="Select Profile Image" onPress={() => selectImage(setProfileImage)} />
+        <TouchableOpacity style={styles.button} onPress={() => selectImage(setProfileImage)}>
+          <Text style={styles.buttonText}>Select Profile Image</Text>
+        </TouchableOpacity>
         {profileImage && <Image source={{ uri: profileImage }} style={styles.imagePreview} />}
 
-        <Button title="Submit Post" onPress={handleSubmit} />
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Submit Post</Text>
+        </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
-
-const styles = {
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 8,
-    marginBottom: 10,
-    borderRadius: 4,
-  },
-  imagePreview: {
-    width: 200,
-    height: 200,
-    marginTop: 10,
-    marginBottom: 10,
-    resizeMode: 'cover',
-  },
 };
 
 export default CreatePost;

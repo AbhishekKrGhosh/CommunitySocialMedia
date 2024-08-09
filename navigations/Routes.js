@@ -1,5 +1,7 @@
 export const Routes = {
     Home:'Home',
     Profile:'Profile',
-    CreatePost:'CreatePost'
+    CreatePost:'CreatePost',
+    Community:'Community',
+    SplashScreen:'SplashScreen'
 }

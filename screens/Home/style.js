@@ -4,7 +4,8 @@ import { horizontalScale, scaleFontSize, verticalScale } from "../../assets/styl
 
 const style = StyleSheet.create({
     whitebackground:{
-        backgroundColor:'#FFF'
+        backgroundColor:'#FFF6E9',
+        flex:1
     },
 header:{
     marginLeft:horizontalScale(27),
@@ -17,7 +18,7 @@ header:{
   messageIcon:{
     padding:horizontalScale(14),
     borderRadius:horizontalScale(100),
-    backgroundColor:'#F9FAFB'
+    backgroundColor:'#FFF1DB'
 },
 messageNumberContainer:{
     backgroundColor:'#F35BAC',
@@ -42,6 +43,12 @@ userStoryContainer:{
 userPostContainer:{
     marginHorizontal:horizontalScale(24),
     
+},
+emptyContainer:{
+    flex: 1, // Take up the whole screen
+    justifyContent: 'center', // Center vertically
+    alignItems: 'center', // Center horizontally
+    backgroundColor: '#fff', // Optional: Set a background color
 }
 })
 export default style
