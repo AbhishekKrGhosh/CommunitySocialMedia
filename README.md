@@ -1,79 +1,83 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Community Social Media Mobile Application
+### Overview
 
-# Getting Started
+This project is a feature-rich social media mobile application built using React Native, with a focus on community-driven content, user stories, and posts. It includes a scalable UI, seamless navigation, and advanced state management. The backend is developed with Express.js, providing robust API endpoints for data handling and integration with the frontend.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### Features
 
-## Step 1: Start the Metro Server
+Community Management: Users can search for, join, or create new communities. Duplicate community names are automatically detected and handled.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+User Posts & Stories: Users can create posts with images and share their stories within communities. Infinite scrolling and pagination are implemented for smooth content loading.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Image Uploads: Integrated image picker for users to select and upload profile and post images directly from their device.
 
-```bash
-# using npm
-npm start
+Dynamic UI Scaling: The app employs custom scaling functions to ensure a consistent user experience across different screen sizes and devices.
 
-# OR using Yarn
-yarn start
-```
+Navigation: Utilizes React Navigation for managing screen transitions and routing between different app sections.
 
-## Step 2: Start your Application
+State Management: Uses Context API for managing global state related to selected communities, posts, and user stories.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Technology Stack
 
-### For Android
+Frontend: React Native
 
-```bash
-# using npm
-npm run android
+Backend: Express.js, Node.js
 
-# OR using Yarn
-yarn android
-```
+Database: MongoDB (Cloud Version)
 
-### For iOS
+State Management: Context API, React Hooks (useState, useEffect)
 
-```bash
-# using npm
-npm run ios
+Networking: Axios for API requests
 
-# OR using Yarn
-yarn ios
-```
+UI/UX: Custom scaling functions, dynamic styles, and responsive design principles
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Installation
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Clone the repository:
 
-## Step 3: Modifying your App
+`git clone https://github.com/yourusername/social-media-app.git`
 
-Now that you have successfully run the app, let's modify it.
+Navigate to the project directory:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+`cd social-media-app`
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Install dependencies:
 
-## Congratulations! :tada:
+`npm install`
 
-You've successfully run and modified your React Native App. :partying_face:
+Run the mobile application:
 
-### Now what?
+`npx react-native run-android`
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+or
 
-# Troubleshooting
+`npx react-native run-ios`
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+### Usage
 
-To learn more about React Native, take a look at the following resources:
+Community: Search for a community or create a new one.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Create Post: Add posts with images, and view posts and stories in an infinite scroll format.
+
+Profile Management: Upload and manage your profile image.
+
+### Backend Setup
+
+The backend is developed using Express.js and handles API requests for communities, posts, and user stories. To set up the backend:
+
+Navigate to the server directory:
+
+`cd server`
+
+Install backend dependencies:
+
+`npm install`
+
+Start the server:
+
+`npm run start`
+
+### Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request for any feature additions, bug fixes, or improvements.
