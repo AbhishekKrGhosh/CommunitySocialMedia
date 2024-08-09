@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 const UserProfileImage = (props) =>{
     return (
         <View style={[style.userImageContainer, {borderRadius:props.imageDimensions}]}>
-            <Image source={props.profileImage} style={{width:props.imageDimensions, height:props.imageDimensions}}/>
+            <Image source={props.profileImage} style={{width:props.imageDimensions, height:props.imageDimensions, borderRadius:props.imageDimensions}}/>
         </View>
     )
 }

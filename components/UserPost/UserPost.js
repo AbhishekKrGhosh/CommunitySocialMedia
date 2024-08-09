@@ -6,22 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import style from "./style";
 import { faBookmark, faHeart, faMessage } from "@fortawesome/free-regular-svg-icons";
+import { horizontalScale, scaleFontSize } from "../../assets/styles/scaling";
 
 const UserPost = (props) => {
     return (
         <View style={style.userPostContainer}>
             <View style={style.user}>
                 <View style={style.userContainer}>
-                <UserProfileImage profileImage={props.profileImage} imageDimensions={48}/>
+                <UserProfileImage profileImage={props.profileImage} imageDimensions={horizontalScale(48)}/>
                 <View style={style.userTextContainer}>
                     <Text style={style.username}>{props.firstName} {props.lastName}</Text>
                     {props.location && <Text style={style.location}>{props.location}</Text>}
                 </View>
                 </View>
-                <FontAwesomeIcon icon={faEllipsis} size={24} color="#79869F"/>
+                <FontAwesomeIcon icon={faEllipsis} size={scaleFontSize(24)} color="#79869F"/>
             </View>
             <View style={style.postImage}>
-                <Image source={props.image}/>
+                <Image source={props.image} style={{width:300, height:200}}/>
             </View>
             <View style={style.userPostStats}>
                 <View style={style.userPostStatsButton}>
