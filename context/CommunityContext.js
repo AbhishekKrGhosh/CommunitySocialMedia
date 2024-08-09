@@ -4,9 +4,10 @@ const CommunityContext = createContext();
 
 export const CommunityProvider = ({ children }) => {
   const [selectedCommunity, setSelectedCommunity] = useState(null);
+  const [activity, setActivity] = useState("")
 
   return (
-    <CommunityContext.Provider value={{ selectedCommunity, setSelectedCommunity }}>
+    <CommunityContext.Provider value={{ selectedCommunity, setSelectedCommunity, activity,  setActivity}}>
       {children}
     </CommunityContext.Provider>
   );

@@ -5,9 +5,10 @@ import axios from 'axios';
 import { useCommunity } from '../../context/CommunityContext';
 import { Routes } from '../../navigations/Routes';
 import styles from './style'; 
+import { CommonActions } from '@react-navigation/native';
 
 const CreatePost = ({ navigation }) => {
-  const { selectedCommunity } = useCommunity();
+  const { selectedCommunity, setActivity } = useCommunity();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [location, setLocation] = useState('');
@@ -61,7 +62,13 @@ const CreatePost = ({ navigation }) => {
 
       console.log('Post created:', response.data);
       Alert.alert('Post created successfully!');
-      navigation.navigate(Routes.Home);
+      setActivity("Done")
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: Routes.Home }],
+        })
+      );
 
     } catch (error) {
       console.error('Error creating post:', error);

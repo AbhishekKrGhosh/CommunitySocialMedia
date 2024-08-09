@@ -4,9 +4,8 @@ import { horizontalScale, scaleFontSize, verticalScale } from '../../assets/styl
 
 const style = StyleSheet.create({
   userPostContainer: {
-    marginTop:verticalScale(35),
+    marginTop:verticalScale(5),
     borderBottomWidth:1,
-    paddingBottom:verticalScale(20),
     borderBottomColor:'#EFF2F6'
   },
   user: {

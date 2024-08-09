@@ -38,17 +38,17 @@ messageNumber:{
     fontFamily:getFontFamily('Inter_18pt', 600)
 },
 userStoryContainer:{
-    marginTop:verticalScale(20),
+    marginVertical:verticalScale(20),
 },
 userPostContainer:{
     marginHorizontal:horizontalScale(24),
     
 },
 emptyContainer:{
-    flex: 1, // Take up the whole screen
-    justifyContent: 'center', // Center vertically
-    alignItems: 'center', // Center horizontally
-    backgroundColor: '#fff', // Optional: Set a background color
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#fff', 
 }
 })
 export default style

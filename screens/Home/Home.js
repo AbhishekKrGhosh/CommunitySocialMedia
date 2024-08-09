@@ -22,7 +22,7 @@ import { useCommunity } from '../../context/CommunityContext';
 
 const Home = ({ navigation }) => {
     const DEFAULT_IMAGE = Image.resolveAssetSource(nodata).uri;
-  const { selectedCommunity } = useCommunity(); 
+  const { selectedCommunity, activity, setActivity } = useCommunity(); 
   const [userStories, setUserStories] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
   const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1);
@@ -55,8 +55,8 @@ const Home = ({ navigation }) => {
           ? storiesResponse.data.filter(story => story.communityName === selectedCommunity)
           : storiesResponse.data;
 
-        setUserPosts(filteredPosts);
-        setUserStories(filteredStories);
+          setUserPosts(filteredPosts.reverse());
+          setUserStories(filteredStories.reverse());
         setIsLoadingInitialData(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -120,10 +120,13 @@ const Home = ({ navigation }) => {
             ListHeaderComponent={
               <>
                 <View style={globalStyle.header}>
-                  <Title title={"Let's Create"} />
+                  <View style={{width:240}}>
+                  <Title title={`${selectedCommunity.toUpperCase()} COMMUNITY `} />
+                  </View>
                   <TouchableOpacity
                     style={globalStyle.messageIcon}
-                    onPress={() => { navigation.navigate(Routes.CreatePost); }}
+                    onPress={() => { 
+                      navigation.navigate(Routes.CreatePost); }}
                   >
                     <FontAwesomeIcon icon={faPlus} size={horizontalScale(20)} color='#914F1E' />
                   </TouchableOpacity>
