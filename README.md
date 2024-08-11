@@ -4,6 +4,15 @@
 
 This project is a feature-rich social media mobile application developed using React Native, designed to facilitate community-driven content, user stories, and posts. The application features a scalable UI, seamless navigation, and advanced state management. The backend, built with Express.js, provides robust API endpoints for data handling and integration with the frontend.
 
+
+## Screen Recording:
+
+
+
+https://github.com/user-attachments/assets/24e03ff3-daaa-42b6-bcab-07e2970c42ef
+
+
+
 ## Features
 
 - **Community Management:**
