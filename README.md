@@ -9,8 +9,6 @@ This project is a feature-rich social media mobile application developed using R
 
 
 
-https://github.com/user-attachments/assets/24e03ff3-daaa-42b6-bcab-07e2970c42ef
-
 
 
 ## Features
