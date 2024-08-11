@@ -12,6 +12,7 @@ const CreatePost = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [location, setLocation] = useState('');
+  const [description, setDiscription] = useState('')
   const [image, setImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
 
@@ -40,7 +41,7 @@ const CreatePost = ({ navigation }) => {
 
   const handleSubmit = async () => {
     try {
-      if (!firstName || !lastName || !image || !profileImage) {
+      if (!firstName || !lastName || !description || !image || !profileImage) {
         Alert.alert('Please fill all required fields and select both images');
         return;
       }
@@ -49,6 +50,7 @@ const CreatePost = ({ navigation }) => {
         communityName: selectedCommunity,
         firstName,
         lastName,
+        description,
         location,
         image,
         profileImage,
@@ -97,6 +99,15 @@ const CreatePost = ({ navigation }) => {
           style={styles.input}
         />
 
+      <Text>Description:</Text>
+        <TextInput
+          value={description}
+          onChangeText={setDiscription}
+          placeholder="Enter Description"
+          multiline={true}
+          style={styles.input}
+        />
+
         <Text>Location (Optional):</Text>
         <TextInput
           value={location}
@@ -104,6 +115,7 @@ const CreatePost = ({ navigation }) => {
           placeholder="Enter Location"
           style={styles.input}
         />
+        
 <View style={styles.buttonsandimage}>
 <TouchableOpacity style={styles.button} onPress={() => selectImage(setImage)}>
           <Text style={styles.buttonText}>Select Post Image</Text>

@@ -18,7 +18,7 @@ header:{
   messageIcon:{
     padding:horizontalScale(14),
     borderRadius:horizontalScale(100),
-    backgroundColor:'#FFF1DB'
+    backgroundColor:'#914F1E'
 },
 messageNumberContainer:{
     backgroundColor:'#F35BAC',

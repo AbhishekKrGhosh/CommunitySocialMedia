@@ -128,7 +128,7 @@ const Home = ({ navigation }) => {
                     onPress={() => { 
                       navigation.navigate(Routes.CreatePost); }}
                   >
-                    <FontAwesomeIcon icon={faPlus} size={horizontalScale(20)} color='#914F1E' />
+                    <FontAwesomeIcon icon={faPlus} size={horizontalScale(20)} color='#fff' />
                   </TouchableOpacity>
                 </View>
                 <View style={globalStyle.userStoryContainer}>
@@ -158,12 +158,11 @@ const Home = ({ navigation }) => {
               <UserPost
                 firstName={item.firstName}
                 lastName={item.lastName}
+                description={item.description||''}
                 image={{ uri: item.image }} 
                 profileImage={{ uri: item.profileImage }}
-                likes={0}
-                comments={0}
-                bookmarks={0}
                 location={item.location}
+                createdAt={!item.createdAt?'':item.createdAt}
               />
             )}
           />

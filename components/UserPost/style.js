@@ -28,7 +28,21 @@ const style = StyleSheet.create({
   },
   postImage: {
     alignItems: 'center',
-    marginVertical: verticalScale(20),
+    marginVertical: verticalScale(20)
+    
+  },
+  image:{
+    borderWidth:4,
+    borderColor:'#914F1E'
+  },
+  discription:{
+    padding:5
+  },
+  UpperBorderImage:{
+    borderWidth:2,
+    borderColor:'#914F1E',
+    padding:2,
+    backgroundColor:'#fff'
   },
   userPostStats:{marginLeft:horizontalScale(10), flexDirection:'row'},
   userPostStatsButton:{flexDirection:'row'},

@@ -5,7 +5,8 @@ const style = StyleSheet.create({
     userImageContainer:{
         borderColor:'#914F1E',
         borderWidth:1,
-        padding:horizontalScale(3)
+        padding:horizontalScale(3),
+        backgroundColor:'#fff'
     }
 })
 

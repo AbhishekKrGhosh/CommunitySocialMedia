@@ -7,6 +7,7 @@ import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import style from "./style";
 import { faBookmark, faHeart, faMessage } from "@fortawesome/free-regular-svg-icons";
 import { horizontalScale, scaleFontSize } from "../../assets/styles/scaling";
+import moment from "moment";
 
 const UserPost = (props) => {
     return (
@@ -18,10 +19,19 @@ const UserPost = (props) => {
                     <Text style={style.username}>{props.firstName} {props.lastName}</Text>
                     {props.location && <Text style={style.location}>{props.location}</Text>}
                 </View>
+                
                 </View>
+                <Text>{props.createdAt==''?'':moment(props.createdAt).fromNow()}</Text>
             </View>
             <View style={style.postImage}>
-                <Image source={props.image} style={{width:300, height:200}}/>
+                <View style={style.UpperBorderImage}>
+                <View style={style.image}>
+                <Image source={props.image} style={[{width:300, height:200}]}/>
+                </View>
+                <View style={style.discription}>
+                <Text style={{color:'#000'}}>{props.description}</Text>
+                </View>
+                </View>
             </View>
         </View>
     )
