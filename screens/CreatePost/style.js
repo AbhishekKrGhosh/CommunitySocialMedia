@@ -18,6 +18,7 @@ const style = StyleSheet.create({
     borderColor: '#ccc',
     backgroundColor:'#FFF6E9',
     padding: 8,
+    color:'#000',
     marginBottom: 10,
     borderRadius: 4,
   },
@@ -30,7 +31,7 @@ const style = StyleSheet.create({
     borderRadius: 8,
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#914F1E',
     borderRadius: 8,
     padding: 12,
     width:300,
